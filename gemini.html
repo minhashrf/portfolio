@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Ashraf | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0D0D0D;
+            font-family: 'Inter', sans-serif;
+            color: #EAEAEA;
+            /* overflow: hidden; */ /* Prevent scrolling */
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom gradient classes */
+        .card-bg-gradient {
+            background: rgba(26, 26, 128, 0.2); /* fallback */
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.2), rgba(26, 26, 128, 0.2));
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.4), rgba(26, 26, 128, 0.4));
+        }
+        /* Glassmorphism effect */
+        .glass {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(234, 234, 234, 0.1);
+        }
+        /* Custom animations */
+        @keyframes pulse-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .pulse-anim {
+            animation: pulse-animation 2s infinite ease-in-out;
+        }
+
+        /* Page transition animations */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+            visibility: hidden;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .page.home {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .page.active {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .slide-out-left {
+            transform: translateX(-100%);
+        }
+
+        .slide-in-right {
+            transform: translateX(0);
+        }
+
+        .slide-out-right {
+            transform: translateX(100%);
+        }
+
+        .slide-in-left {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-200">
+
+    <!-- Page Container -->
+    <div id="page-container" class="relative w-full h-screen">
+
+        <!-- Home Page (Initially Active) -->
+        <section id="hero" class="page home">
+            <div class="flex flex-col items-center justify-center text-center p-4">
+                <div class="mb-8">
+                    <!-- Replace 'your-image-url.jpg' with the actual path or URL to your picture -->
+                    <img src="profile.jpeg" alt="Minha Ashraf" class="w-[140px] h-[140px] rounded-full mx-auto object-cover border-4 border-purple-400 shadow-xl pulse-anim">
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-[#EAEAEA] mb-2">
+                    Hey, I am <span class="text-gradient">Minha Ashraf</span>
+                </h1>
+                <p class="text-lg md:text-xl text-[rgba(234,234,234,0.85)] max-w-2xl mx-auto">
+                    Computer Science Student & Technology Enthusiast
+                </p>
+            </div>
+            <!-- Navigation Buttons Section -->
+            <div class="px-4 md:px-8 mt-16 max-w-2xl w-full">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="about">About Me</button>
+                    <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="education">Education</button>
+                    <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="skills">Skills</button>
+                    <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="projects">Projects</button>
+                    <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="resume">Resume</button>
+                    <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="contact">Contact</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page p-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+                Return to Home
+            </button>
+            <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
+                <h2 class="text-2xl font-bold mb-8 text-[#EAEAEA]">About Me</h2>
+                <!-- Profile Image -->
+                <div class="mb-6 mx-auto w-24 h-24 rounded-full bg-[#9D4EDD] flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-white"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <!-- Description -->
+                <p class="text-[rgba(234,234,234,0.85)] leading-relaxed mb-8">I am Minha Ashraf, a final-year Computer Science student passionate about technology, problem-solving, and creative projects. I enjoy learning new concepts, building practical solutions, and exploring innovative ideas in software development and programming.</p>
+                <!-- Key Attributes Section -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-purple-600 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code text-white"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Problem Solver</h3>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Analytical approach to complex challenges</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-blue-600 p-4 rounded-full mb-4">
+                            <!-- New Lightbulb SVG -->
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <path d="M9 18h6" />
+                                <path d="M10 22h4" />
+                                <path d="M12 2a6 6 0 0 0-6 6c0 4.5 3.33 6.67 4.5 8h3c1.17-1.33 4.5-3.5 4.5-8A6 6 0 0 0 12 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Creative Thinker</h3>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Innovative solutions to technical problems</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-teal-600 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-laptop text-white"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.92 1.45H3.64a1 1 0 0 1-.92-1.45L4 16"/><line x1="12" x2="12" y1="16" y2="20"/></svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Tech Enthusiast</h3>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Always learning new technologies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Page -->
+        <section id="education" class="page p-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+                Return to Home
+            </button>
+            <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
+                <h2 class="text-2xl font-bold mb-8 text-[#EAEAEA]">Education</h2>
+                <!-- Main Education Card -->
+                <h3 class="text-xl md:text-2xl font-bold mb-2 text-[#EAEAEA]">B.Tech in Computer Science and Engineering</h3>
+                <div class="inline-block bg-[#9D4EDD] text-white text-sm font-bold py-1 px-4 rounded-full mb-4">
+                    CGPA: 8.97
+                </div>
+                <p class="text-[rgba(234,234,234,0.85)] leading-relaxed mb-8">Currently in final year, specializing in software development, algorithms, and emerging technologies.</p>
+                <!-- Key Highlights Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-purple-600 p-4 rounded-lg mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text text-white"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/><path d="M12 7h4"/><path d="M12 11h4"/><path d="M12 15h4"/></svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Core Subjects</h3>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Data Structures, Algorithms, Database Systems, Software Engineering</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-blue-600 p-4 rounded-lg mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy text-white"><path d="M6 9H4v-2h2c2.8 0 5 2.2 5 5v3c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2v-3c0-2.8 2.2-5 5-5z"/><path d="M18 9H16v-2h2c2.8 0 5 2.2 5 5v3c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2v-3c0-2.8 2.2-5 5-5z"/><path d="M8 22h8m-4-15v15"/></svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Academic Excellence</h3>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Consistent high performance with a strong technical foundation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Page -->
+        <section id="skills" class="page p-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+                Return to Home
+            </button>
+            <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl mt-16 md:mt-0">
+                <h2 class="text-2xl font-bold mb-4 text-[#9D4EDD]">Skills</h2>
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold mb-2">Technical Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Python</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Java</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">C</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">SQL</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Dart</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold mb-2">Soft Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 text-blue-400 py-1 px-3 rounded-full text-sm">Analytical Thinking</span>
+                        <span class="bg-gray-800 text-blue-400 py-1 px-3 rounded-full text-sm">Creative Problem Solving</span>
+                        <span class="bg-gray-800 text-blue-400 py-1 px-3 rounded-full text-sm">Adaptability</span>
+                        <span class="bg-gray-800 text-blue-400 py-1 px-3 rounded-full text-sm">Teamwork</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-2">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 text-green-400 py-1 px-3 rounded-full text-sm">English</span>
+                        <span class="bg-gray-800 text-green-400 py-1 px-3 rounded-full text-sm">Hindi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Page -->
+        <section id="projects" class="page p-8 overflow-y-auto">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+                Return to Home
+            </button>
+            <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
+                <h2 class="text-2xl font-bold mb-4 text-[#9D4EDD]">Projects</h2>
+
+                <!-- Project Card -->
+                <div class="bg-[rgba(17,24,39,0.7)] rounded-lg p-6 shadow-md mb-6">
+                    <div class="flex flex-col items-center justify-center mb-6">
+                        <!-- Project Icon Removed -->
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 text-[#EAEAEA]">Blockchain-Based Voting System</h3>
+                        <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">Developed a secure and transparent voting system leveraging blockchain technology to ensure immutability and tamper-proof election results. The system utilizes smart contracts to automate vote counting and verification processes, providing complete transparency while maintaining voter privacy.</p>
+                    </div>
+
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="bg-purple-600 p-4 rounded-full mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-white"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-1">Transparency</h4>
+                            <p class="text-sm text-[rgba(234,234,234,0.6)]">All votes are publicly verifiable on the blockchain</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="bg-blue-600 p-4 rounded-full mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock text-white"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-1">Immutability</h4>
+                            <p class="text-sm text-[rgba(234,234,234,0.6)]">Once recorded, votes cannot be altered or deleted</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="bg-green-600 p-4 rounded-full mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check2 text-white"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v18z"/><path d="M14 2v5h5"/><path d="m9 14 2 2 4-4"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-1">Tamper-Proof</h4>
+                            <p class="text-sm text-[rgba(234,234,234,0.6)]">Smart contracts ensure secure vote processing</p>
+                        </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap justify-center gap-2 mt-4">
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Blockchain</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Smart Contracts</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Cryptography</span>
+                        <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Web3</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Page -->
+        <section id="resume" class="page p-8 overflow-y-auto">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+                Return to Home
+            </button>
+            <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
+                <div class="flex flex-col items-center mb-8">
+                    <div class="bg-[#9D4EDD] p-4 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check text-white">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <path d="m9 15 2 2 4-4" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2 text-[#EAEAEA]">Get My Complete Resume</h2>
+                    <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">Download my detailed resume to learn more about my educational background, technical skills, projects, and achievements in computer science.</p>
+                </div>
+
+                <!-- Download Button -->
+                <a href="Minha-Ashraf_Resume.pdf" download="Minha_Ashraf_Resume.pdf" class="btn-gradient text-[#EAEAEA] font-bold py-3 px-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 inline-flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    <span>Download My Resume</span>
+                </a>
+                
+                <!-- Separator -->
+                <div class="w-1/2 h-0.5 my-8 mx-auto bg-gray-700"></div>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="bg-purple-600 p-4 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-white"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="font-bold mb-1">Personal Info</h4>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Complete contact details and background</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="bg-blue-600 p-4 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase text-white"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
+                        <h4 class="font-bold mb-1">Experience</h4>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Projects and technical accomplishments</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="bg-green-600 p-4 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award text-white"><path d="m15 15-4 4-4-4"/><path d="M12 11V5"/><path d="M8 21h8"/><path d="M12 17a5 5 0 0 0-5-5V7a5 5 0 0 0 5-5 5 5 0 0 0 5 5v5a5 5 0 0 0-5 5z"/></svg>
+                        </div>
+                        <h4 class="font-bold mb-1">Achievements</h4>
+                        <p class="text-sm text-[rgba(234,234,234,0.6)]">Academic excellence and certifications</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page p-8 overflow-y-auto">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+                Return to Home
+            </button>
+            <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
+                <div class="flex flex-col items-center mb-8">
+                    <div class="bg-[#9D4EDD] p-4 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail text-white"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2 text-[#EAEAEA]">Contact Me</h2>
+                    <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">I'm always open to discussing new opportunities, collaborations, or just having a conversation about technology. Feel free to reach out!</p>
+                </div>
+
+                <!-- Contact Info Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                    <div class="flex flex-col items-center text-center">
+                        <a href="mailto:minhaashraf8@gmail.com" class="flex flex-col items-center text-center transition-transform duration-300 hover:scale-110" target="_blank">
+                            <div class="bg-purple-600 p-4 rounded-full mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail text-white"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-1">Email</h4>
+                        </a>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <a href="https://github.com/minhashrf" target="_blank" class="flex flex-col items-center text-center transition-transform duration-300 hover:scale-110">
+                            <div class="bg-blue-600 p-4 rounded-full mb-2">
+                                <svg viewBox="0 0 24 24" class="w-6 h-6 text-white" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.161 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.007.07 1.532 1.03 1.532 1.03.89 1.529 2.336 1.087 2.903.834.091-.647.35-1.087.635-1.339-2.2-.257-4.505-1.092-4.505-4.851 0-1.07.382-1.944 1.01-2.623-.102-.257-.439-1.241.096-2.585 0 0 .822-.263 2.693 1.002.785-.218 1.62-.329 2.455-.333.835.004 1.67.115 2.455.333 1.87-1.265 2.692-1.002 2.692-1.002.536 1.344.209 2.328.096 2.585.629.679 1.009 1.553 1.009 2.623 0 3.768-2.309 4.59-4.515 4.842.359.309.678.92.678 1.855 0 1.339-.012 2.419-.012 2.747 0 .267.18.577.688.488C21.13 20.177 24 16.432 24 12.017 24 6.484 19.523 2 14 2z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h4 class="font-bold mb-1">Github</h4>
+                        </a>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <a href="https://www.linkedin.com/in/minha-ashraf" target="_blank" class="flex flex-col items-center text-center transition-transform duration-300 hover:scale-110">
+                            <div class="bg-green-600 p-4 rounded-full mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin text-white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-1">LinkedIn</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer for all pages -->
+    <footer class="fixed bottom-0 w-full text-center p-6 text-[rgba(234,234,234,0.6)] text-sm">
+        <p>&copy; 2025 Minha Ashraf. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const pageLinks = document.querySelectorAll('.page-link');
+        const backLinks = document.querySelectorAll('.back-link');
+        const homePage = document.getElementById('hero');
+        let activePage = homePage;
+
+        function navigateToPage(targetPage, direction = 'forward') {
+            if (activePage) {
+                activePage.classList.remove('active', 'home');
+                
+                // Add the animation class for the outgoing page
+                if (direction === 'forward') {
+                    activePage.classList.add('slide-out-left');
+                } else {
+                    activePage.classList.add('slide-out-right');
+                }
+
+                setTimeout(() => {
+                    activePage.classList.remove('slide-out-left', 'slide-out-right');
+                    
+                    // Add the animation class for the incoming page
+                    if (direction === 'forward') {
+                        targetPage.classList.add('slide-in-right');
+                    } else {
+                        targetPage.classList.add('slide-in-left');
+                    }
+
+                    targetPage.classList.add('active');
+                    if (targetPage === homePage) {
+                        targetPage.classList.add('home');
+                    }
+                    activePage = targetPage;
+                    
+                    // Remove the slide-in class after the animation
+                    setTimeout(() => {
+                        targetPage.classList.remove('slide-in-left', 'slide-in-right');
+                    }, 500);
+                }, 500);
+            }
+        }
+
+        pageLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = e.currentTarget.dataset.target;
+                const targetPage = document.getElementById(targetId);
+                navigateToPage(targetPage, 'forward');
+            });
+        });
+
+        backLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navigateToPage(homePage, 'backward');
+            });
+        });
+    </script>
+
+</body>
+</html>
