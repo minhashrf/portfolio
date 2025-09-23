@@ -15,18 +15,22 @@
             background-color: #0D0D0D;
             font-family: 'Inter', sans-serif;
             color: #EAEAEA;
-            /* overflow: hidden; */ /* Prevent scrolling */
         }
         h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
         }
         /* Custom gradient classes */
         .card-bg-gradient {
-            background: rgba(26, 26, 128, 0.2); /* fallback */
+            background: rgba(26, 26, 128, 0.2);
             background: linear-gradient(135deg, rgba(75, 0, 130, 0.2), rgba(26, 26, 128, 0.2));
         }
         .btn-gradient {
             background: linear-gradient(135deg, rgba(157, 78, 221, 0.4), rgba(26, 26, 128, 0.4));
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, #9D4EDD, #A379E6, #D4AFEE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         /* Glassmorphism effect */
         .glass {
@@ -59,6 +63,7 @@
             justify-content: center;
             flex-direction: column;
             padding: 2rem;
+            overflow-y: auto;
         }
 
         .page.home {
@@ -66,7 +71,7 @@
             visibility: visible;
             opacity: 1;
         }
-        
+
         .page.active {
             transform: translateX(0);
             visibility: visible;
@@ -88,6 +93,22 @@
         .slide-in-left {
             transform: translateX(0);
         }
+        /* For mobile, fix the back button to the top-left */
+        .back-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .back-link {
+                position: static;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 2rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased text-gray-200">
@@ -99,18 +120,27 @@
         <section id="hero" class="page home">
             <div class="flex flex-col items-center justify-center text-center p-4">
                 <div class="mb-8">
-                    <!-- Replace 'your-image-url.jpg' with the actual path or URL to your picture -->
+                    <!-- Placeholder image for profile picture -->
                     <img src="profile.jpeg" alt="Minha Ashraf" class="w-[140px] h-[140px] rounded-full mx-auto object-cover border-4 border-purple-400 shadow-xl pulse-anim">
                 </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-[#EAEAEA] mb-2">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-2">
                     Hey, I am <span class="text-gradient">Minha Ashraf</span>
                 </h1>
                 <p class="text-lg md:text-xl text-[rgba(234,234,234,0.85)] max-w-2xl mx-auto">
                     Computer Science Student & Technology Enthusiast
                 </p>
             </div>
+            <!-- Search Bar Section -->
+            <div class="px-4 md:px-8 mt-8 max-w-2xl w-full">
+                <div class="relative">
+                    <input id="search-bar" type="text" placeholder="Search sections..." class="w-full bg-gray-800 text-[#EAEAEA] py-3 px-6 rounded-lg shadow-lg border border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
             <!-- Navigation Buttons Section -->
-            <div class="px-4 md:px-8 mt-16 max-w-2xl w-full">
+            <div class="px-4 md:px-8 mt-8 max-w-2xl w-full">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="about">About Me</button>
                     <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="education">Education</button>
@@ -124,7 +154,7 @@
 
         <!-- About Page -->
         <section id="about" class="page p-8">
-            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
@@ -169,7 +199,7 @@
 
         <!-- Education Page -->
         <section id="education" class="page p-8">
-            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
@@ -202,7 +232,7 @@
 
         <!-- Skills Page -->
         <section id="skills" class="page p-8">
-            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl mt-16 md:mt-0">
@@ -237,8 +267,8 @@
         </section>
 
         <!-- Projects Page -->
-        <section id="projects" class="page p-8 overflow-y-auto">
-            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+        <section id="projects" class="page p-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
@@ -247,7 +277,6 @@
                 <!-- Project Card -->
                 <div class="bg-[rgba(17,24,39,0.7)] rounded-lg p-6 shadow-md mb-6">
                     <div class="flex flex-col items-center justify-center mb-6">
-                        <!-- Project Icon Removed -->
                         <h3 class="text-2xl md:text-3xl font-bold mb-2 text-[#EAEAEA]">Blockchain-Based Voting System</h3>
                         <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">Developed a secure and transparent voting system leveraging blockchain technology to ensure immutability and tamper-proof election results. The system utilizes smart contracts to automate vote counting and verification processes, providing complete transparency while maintaining voter privacy.</p>
                     </div>
@@ -290,8 +319,8 @@
         </section>
 
         <!-- Resume Page -->
-        <section id="resume" class="page p-8 overflow-y-auto">
-            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+        <section id="resume" class="page p-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
@@ -312,7 +341,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                     <span>Download My Resume</span>
                 </a>
-                
+
                 <!-- Separator -->
                 <div class="w-1/2 h-0.5 my-8 mx-auto bg-gray-700"></div>
 
@@ -344,8 +373,8 @@
         </section>
 
         <!-- Contact Page -->
-        <section id="contact" class="page p-8 overflow-y-auto">
-            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link fixed top-4 left-4 z-10 md:static md:mx-auto md:mb-8">
+        <section id="contact" class="page p-8">
+            <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
@@ -405,8 +434,7 @@
         function navigateToPage(targetPage, direction = 'forward') {
             if (activePage) {
                 activePage.classList.remove('active', 'home');
-                
-                // Add the animation class for the outgoing page
+
                 if (direction === 'forward') {
                     activePage.classList.add('slide-out-left');
                 } else {
@@ -415,8 +443,7 @@
 
                 setTimeout(() => {
                     activePage.classList.remove('slide-out-left', 'slide-out-right');
-                    
-                    // Add the animation class for the incoming page
+
                     if (direction === 'forward') {
                         targetPage.classList.add('slide-in-right');
                     } else {
@@ -428,8 +455,7 @@
                         targetPage.classList.add('home');
                     }
                     activePage = targetPage;
-                    
-                    // Remove the slide-in class after the animation
+
                     setTimeout(() => {
                         targetPage.classList.remove('slide-in-left', 'slide-in-right');
                     }, 500);
@@ -449,6 +475,38 @@
             link.addEventListener('click', () => {
                 navigateToPage(homePage, 'backward');
             });
+        });
+
+        // Get the search bar element
+        const searchBar = document.getElementById('search-bar');
+
+        // Define a map of keywords to section IDs for navigation
+        const sectionMap = {
+            'about': 'about',
+            'education': 'education',
+            'skills': 'skills',
+            'projects': 'projects',
+            'resume': 'resume',
+            'contact': 'contact'
+        };
+
+        // Add an event listener for the input event on the search bar
+        searchBar.addEventListener('input', (e) => {
+            // Get the user's input, convert to lowercase, and remove extra spaces
+            const query = e.target.value.trim().toLowerCase();
+            
+            // Check if the query matches a key in our sectionMap
+            if (sectionMap.hasOwnProperty(query)) {
+                // If a match is found, get the target page element
+                const targetPage = document.getElementById(sectionMap[query]);
+                
+                // Use a slight delay before navigating to ensure the animation works smoothly
+                setTimeout(() => {
+                    navigateToPage(targetPage, 'forward');
+                    // Clear the search bar after navigating
+                    e.target.value = '';
+                }, 100);
+            }
         });
     </script>
 
