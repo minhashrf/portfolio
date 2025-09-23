@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Ashraf | Portfolio</title>
-    <!-- Tailwind CSS CDN -->
+  
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
         h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
         }
-        /* Custom gradient classes */
+       
         .card-bg-gradient {
             background: rgba(26, 26, 128, 0.2);
             background: linear-gradient(135deg, rgba(75, 0, 130, 0.2), rgba(26, 26, 128, 0.2));
@@ -32,12 +32,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Glassmorphism effect */
+     
         .glass {
             backdrop-filter: blur(10px);
             border: 1px solid rgba(234, 234, 234, 0.1);
         }
-        /* Custom animations */
+        
         @keyframes pulse-animation {
             0% { transform: scale(1); }
             50% { transform: scale(1.03); }
@@ -47,7 +47,7 @@
             animation: pulse-animation 2s infinite ease-in-out;
         }
 
-        /* Page transition animations */
+       
         .page {
             position: absolute;
             top: 0;
@@ -93,7 +93,7 @@
         .slide-in-left {
             transform: translateX(0);
         }
-        /* For mobile, fix the back button to the top-left */
+       
         .back-link {
             position: fixed;
             top: 1rem;
@@ -113,14 +113,14 @@
 </head>
 <body class="antialiased text-gray-200">
 
-    <!-- Page Container -->
+    
     <div id="page-container" class="relative w-full h-screen">
 
-        <!-- Home Page (Initially Active) -->
+
         <section id="hero" class="page home">
             <div class="flex flex-col items-center justify-center text-center p-4">
                 <div class="mb-8">
-                    <!-- Placeholder image for profile picture -->
+                 
                     <img src="profile.jpeg" alt="Minha Ashraf" class="w-[140px] h-[140px] rounded-full mx-auto object-cover border-4 border-purple-400 shadow-xl pulse-anim">
                 </div>
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-2">
@@ -130,7 +130,7 @@
                     Computer Science Student & Technology Enthusiast
                 </p>
             </div>
-            <!-- Search Bar Section -->
+          
             <div class="px-4 md:px-8 mt-8 max-w-2xl w-full">
                 <div class="relative">
                     <input id="search-bar" type="text" placeholder="Search sections..." class="w-full bg-gray-800 text-[#EAEAEA] py-3 px-6 rounded-lg shadow-lg border border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all duration-300">
@@ -139,7 +139,7 @@
                     </svg>
                 </div>
             </div>
-            <!-- Navigation Buttons Section -->
+            
             <div class="px-4 md:px-8 mt-8 max-w-2xl w-full">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <button class="btn-gradient text-[#EAEAEA] text-center font-bold py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 page-link" data-target="about">About Me</button>
@@ -152,20 +152,20 @@
             </div>
         </section>
 
-        <!-- About Page -->
+      
         <section id="about" class="page p-8">
             <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
                 <h2 class="text-2xl font-bold mb-8 text-[#EAEAEA]">About Me</h2>
-                <!-- Profile Image -->
+              
                 <div class="mb-6 mx-auto w-24 h-24 rounded-full bg-[#9D4EDD] flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-white"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
-                <!-- Description -->
+              
                 <p class="text-[rgba(234,234,234,0.85)] leading-relaxed mb-8">I am Minha Ashraf, a final-year Computer Science student passionate about technology, problem-solving, and creative projects. I enjoy learning new concepts, building practical solutions, and exploring innovative ideas in software development and programming.</p>
-                <!-- Key Attributes Section -->
+               
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div class="flex flex-col items-center">
                         <div class="bg-purple-600 p-4 rounded-full mb-4">
@@ -197,20 +197,20 @@
             </div>
         </section>
 
-        <!-- Education Page -->
+      
         <section id="education" class="page p-8">
             <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
             </button>
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
                 <h2 class="text-2xl font-bold mb-8 text-[#EAEAEA]">Education</h2>
-                <!-- Main Education Card -->
+               
                 <h3 class="text-xl md:text-2xl font-bold mb-2 text-[#EAEAEA]">B.Tech in Computer Science and Engineering</h3>
                 <div class="inline-block bg-[#9D4EDD] text-white text-sm font-bold py-1 px-4 rounded-full mb-4">
                     CGPA: 8.97
                 </div>
                 <p class="text-[rgba(234,234,234,0.85)] leading-relaxed mb-8">Currently in final year, specializing in software development, algorithms, and emerging technologies.</p>
-                <!-- Key Highlights Section -->
+             
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
                     <div class="flex flex-col items-center">
                         <div class="bg-purple-600 p-4 rounded-lg mb-4">
@@ -230,7 +230,7 @@
             </div>
         </section>
 
-        <!-- Skills Page -->
+     
         <section id="skills" class="page p-8">
             <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
@@ -266,7 +266,7 @@
             </div>
         </section>
 
-        <!-- Projects Page -->
+       
         <section id="projects" class="page p-8">
             <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
@@ -274,14 +274,14 @@
             <div class="glass card-bg-gradient rounded-xl p-6 shadow-xl w-full max-w-2xl text-center mt-16 md:mt-0">
                 <h2 class="text-2xl font-bold mb-4 text-[#9D4EDD]">Projects</h2>
 
-                <!-- Project Card -->
+              
                 <div class="bg-[rgba(17,24,39,0.7)] rounded-lg p-6 shadow-md mb-6">
                     <div class="flex flex-col items-center justify-center mb-6">
                         <h3 class="text-2xl md:text-3xl font-bold mb-2 text-[#EAEAEA]">Blockchain-Based Voting System</h3>
                         <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">Developed a secure and transparent voting system leveraging blockchain technology to ensure immutability and tamper-proof election results. The system utilizes smart contracts to automate vote counting and verification processes, providing complete transparency while maintaining voter privacy.</p>
                     </div>
 
-                    <!-- Features Grid -->
+                   
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                         <div class="flex flex-col items-center text-center">
                             <div class="bg-purple-600 p-4 rounded-full mb-2">
@@ -306,7 +306,7 @@
                         </div>
                     </div>
 
-                    <!-- Tags -->
+                   
                     <div class="flex flex-wrap justify-center gap-2 mt-4">
                         <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Blockchain</span>
                         <span class="bg-gray-800 text-purple-400 py-1 px-3 rounded-full text-sm">Smart Contracts</span>
@@ -318,7 +318,7 @@
             </div>
         </section>
 
-        <!-- Resume Page -->
+        
         <section id="resume" class="page p-8">
             <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
@@ -336,16 +336,16 @@
                     <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">Download my detailed resume to learn more about my educational background, technical skills, projects, and achievements in computer science.</p>
                 </div>
 
-                <!-- Download Button -->
+               
                 <a href="Minha-Ashraf_Resume.pdf" download="Minha_Ashraf_Resume.pdf" class="btn-gradient text-[#EAEAEA] font-bold py-3 px-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 inline-flex items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                     <span>Download My Resume</span>
                 </a>
 
-                <!-- Separator -->
+               
                 <div class="w-1/2 h-0.5 my-8 mx-auto bg-gray-700"></div>
 
-                <!-- Features Grid -->
+                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                     <div class="flex flex-col items-center text-center">
                         <div class="bg-purple-600 p-4 rounded-full mb-2">
@@ -372,7 +372,7 @@
             </div>
         </section>
 
-        <!-- Contact Page -->
+       
         <section id="contact" class="page p-8">
             <button class="btn-gradient text-[#EAEAEA] font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 back-link">
                 Return to Home
@@ -386,7 +386,7 @@
                     <p class="text-sm text-[rgba(234,234,234,0.85)] max-w-lg leading-relaxed">I'm always open to discussing new opportunities, collaborations, or just having a conversation about technology. Feel free to reach out!</p>
                 </div>
 
-                <!-- Contact Info Grid -->
+               
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                     <div class="flex flex-col items-center text-center">
                         <a href="mailto:minhaashraf8@gmail.com" class="flex flex-col items-center text-center transition-transform duration-300 hover:scale-110" target="_blank">
@@ -419,7 +419,7 @@
         </section>
     </div>
 
-    <!-- Footer for all pages -->
+   
     <footer class="fixed bottom-0 w-full text-center p-6 text-[rgba(234,234,234,0.6)] text-sm">
         <p>&copy; 2025 Minha Ashraf. All rights reserved.</p>
     </footer>
@@ -477,10 +477,10 @@
             });
         });
 
-        // Get the search bar element
+     
         const searchBar = document.getElementById('search-bar');
 
-        // Define a map of keywords to section IDs for navigation
+        
         const sectionMap = {
             'about': 'about',
             'education': 'education',
@@ -490,20 +490,20 @@
             'contact': 'contact'
         };
 
-        // Add an event listener for the input event on the search bar
+      
         searchBar.addEventListener('input', (e) => {
-            // Get the user's input, convert to lowercase, and remove extra spaces
+           
             const query = e.target.value.trim().toLowerCase();
             
-            // Check if the query matches a key in our sectionMap
+          
             if (sectionMap.hasOwnProperty(query)) {
-                // If a match is found, get the target page element
+               
                 const targetPage = document.getElementById(sectionMap[query]);
                 
-                // Use a slight delay before navigating to ensure the animation works smoothly
+                
                 setTimeout(() => {
                     navigateToPage(targetPage, 'forward');
-                    // Clear the search bar after navigating
+                  
                     e.target.value = '';
                 }, 100);
             }
@@ -512,3 +512,4 @@
 
 </body>
 </html>
+
